@@ -1,7 +1,5 @@
-import React from 'react'
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import Countries from '../components/Countries'
+import React from 'react';
+import Countries from '../components/Countries';
 
 const Home = () => {
   return (
