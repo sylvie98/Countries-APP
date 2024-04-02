@@ -8,7 +8,7 @@ const Header = () => {
      <img
         src='https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274_1280.jpg'
         alt="Background"
-        className="object-cover relative w-full"/>
+        className="object-cover relative w-full h-[25rem]"/>
     </div>
     <div className='absolute top-0 left-0 w-full flex justify-center items-center flex-col  mt-24  p-5'>
     <h1 className='text-white text-1xl font-bold '>Country API App</h1>
