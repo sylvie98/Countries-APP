@@ -20,7 +20,7 @@ const NavBar = () => {
           </button>
         </div>
         <div className={`text-white text-sm md:text-base flex gap-6 md:gap-12 ${showMenu ? 'block' : 'hidden'} sm:block`}>
-          <li className='list-none'><a href=''>Countries</a></li>
+          <li><a href=''>Countries</a></li>
         </div>
       </div>
    </section>
