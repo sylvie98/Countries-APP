@@ -15,6 +15,6 @@ const NavBar = () => {
       <NavLink to={'/'} className={'hidden md:block'}>Countries</NavLink>
     </div>
   )
-}
+  }
 
 export default NavBar

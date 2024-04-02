@@ -10,24 +10,24 @@ export const SectionHolder = styled.section`
     padding-right: 1.5rem;
 `;
 
-export const CountriesSection = styled.section`
+ export const CountriesSection = styled.section`
     display: flex;
     flex-direction: column;
     gap: 40px;
-    padding: 90px 0;
+     padding: 90px 0;
 
-    #top-section {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
+     #top-section {
+    display: flex;
+     width: 100%;
+    justify-content: space-between;
         
-        h3 {
-            font-size: 24px;
-            font-weight: 600;
-        }
+     h3 {
+         font-size: 24px;
+         font-weight: 600;
     }
+ }
 
-    @media (min-width: 768px) {
+ @media (min-width: 768px) {
         
     }
 `;
