@@ -9,7 +9,7 @@ const NavBar = () => {
     <section> 
         <div className='absolute top-0 left-0 w-full flex justify-around p-10'>
           <div className="flex justify-around">
-            <img src='src/image/log.svg'className="w-12 h-12 md:w-16 md:h-16" alt="logo" />
+            <img src="src/image/log.svg" alt="logo" className="w-12 h-12 md:w-16 md:h-16" />
             <p className="text-blue-500 text-lg md:text-3xl font-extrabold hidden sm:block">Logoipsum</p>
           </div>
           <div className="block sm:hidden">
@@ -20,7 +20,7 @@ const NavBar = () => {
           </button>
         </div>
         <div className={`text-white text-sm md:text-base flex gap-6 md:gap-12 ${showMenu ? 'block' : 'hidden'} sm:block`}>
-          <li><a href=''>Countries</a></li>
+          <a href=''>Countries</a>0
         </div>
       </div>
    </section>
