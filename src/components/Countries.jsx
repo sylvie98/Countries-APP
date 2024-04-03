@@ -14,7 +14,7 @@ function Countries() {
    
    
   return (
-     <section>
+     <section >
       <div className='flex justify-around mb-10 mt-10'>
         <div > 
           <h2>View Countries</h2>
@@ -25,11 +25,11 @@ function Countries() {
             </select>
             </div>
             <div className=''>
-            <ul className="flex flex-wrap gap-10 justify-center items-center">
+            <ul className="flex flex-wrap gap-5 justify-center items-center">
            
            {currentCountries.map(country => (
              <div className="items-center md:w-4/12 lg:w-2/12 justify-center" key={country.name.common}>
-              <img src={`https://flagcdn.com/${country.cca2.toLowerCase()}.svg`} alt={country.name.common} className="w-[250px] items-center h-[120px]"/>
+              <img src={`https://flagcdn.com/${country.cca2.toLowerCase()}.svg`} alt={country.name.common} className="w-[250px] h-[120px] "/>
               <strong>{country.name.common}</strong>
              <p><strong>Capital</strong>: {country.capital}</p>
              <p><strong>Population</strong>: {country.population}</p>
