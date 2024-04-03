@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 function Countries() {
    const[countryData, setCountryData] =  useState([]);
    const [currentPage] = useState(1);
-   const countriesPerPage = 15;
+   const countriesPerPage = 250;
    useEffect(() =>{
     fetch('https://restcountries.com/v3/all')
     .then(response => response.json())
