@@ -1,7 +1,45 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CountriesSection } from '../styled-components/GeneralComponents'
 
+const countries = [
+  {
+    name: 'Afghanistan',
+    code: 'AF',
+    flag: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg'
+  },
+  {
+    name: 'Albania',
+    code: 'AL',
+    flag: 'https://flagcdn.com/al.svg'
+  }
+];
+
 const Countries = () => {
+  const [listOfCountries, setListOfCountries] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getCountries = async () => {
+    const response = await fetch("https://restcountries.com/v3.1/all", {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (response.status === 200) {
+      const data = await response.json();
+      console.log(data[0]);
+      setListOfCountries(data);
+    }
+
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    setLoading(true);
+    getCountries();
+  },[]);
+
   return (
     <CountriesSection>
       {/* Top part  */}
@@ -16,8 +54,37 @@ const Countries = () => {
       </div>
 
       {/* List of countries */}
-      <div id='countries'>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae, iure error! Nulla, soluta sint. Repellendus, id, necessitatibus voluptatum recusandae enim excepturi quisquam labore nam quam ad ea in explicabo aspernatur!
+      <div id='countries' className='flex flex-wrap w-full justify-between md:gap-1'>
+        {listOfCountries.length > 0 && listOfCountries.map((country, index) => {
+          return (
+            <div key={index} className='w-5/12 md:w-1/5 mb-5'>
+              <img src={country.flags.svg} alt={country.flags.alt} />
+              <p>{country.name.common}</p>
+              <p>{country.capital}</p>
+              <p>{country.population}</p>
+              <p>{country.continents}</p>
+            </div>
+          )
+        })}
+
+        {loading && <p>Loading...</p>}
+
+        {(!loading && listOfCountries.length === 0) && <p>No countries available</p>}
+
+        {/* Using Ternary operators */}
+        {/* {listOfCountries.length > 0
+          ? 
+            listOfCountries.length > 0 && listOfCountries.map((country, index) => {
+              return (
+                <div key={index}>
+                  <img src={country.flag} alt={country.name} />
+                  <p>{country.name}</p>
+                </div>
+              )
+            })
+          : <p>No countries available</p>
+        } */}
+
       </div>
 
       {/* Pagination  */}
