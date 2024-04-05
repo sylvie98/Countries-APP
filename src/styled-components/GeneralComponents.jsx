@@ -7,6 +7,7 @@ export const SectionHolder = styled.section`
     align-items: center;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    width: 100%;
 
     @media (min-width: 768px) {
         

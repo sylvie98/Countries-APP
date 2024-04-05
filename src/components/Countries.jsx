@@ -1,43 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { CountriesSection } from '../styled-components/GeneralComponents'
-
-const countries = [
-  {
-    name: 'Afghanistan',
-    code: 'AF',
-    flag: 'https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_the_Taliban.svg'
-  },
-  {
-    name: 'Albania',
-    code: 'AL',
-    flag: 'https://flagcdn.com/al.svg'
-  }
-];
+import { getCountries } from '../apis/countries';
+import { useSearchParams } from 'react-router-dom';
+import Pagination from './Pagination';
 
 const Countries = () => {
   const [listOfCountries, setListOfCountries] = useState([]);
   const [loading, setLoading] = useState(false);
-
-  const getCountries = async () => {
-    const response = await fetch("https://restcountries.com/v3.1/all", {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    
-    if (response.status === 200) {
-      const data = await response.json();
-      console.log(data[0]);
-      setListOfCountries(data);
-    }
-
-    setLoading(false);
-  }
+  const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
 
   useEffect(() => {
+    let pageNumber = Number(searchParams.get('page'));
+
     setLoading(true);
-    getCountries();
+    
+    getCountries(pageNumber)
+    .then((data) => {
+      setListOfCountries(data);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
+    .finally(()=> {
+      setLoading(false);
+    })
+
+
   },[]);
 
   return (
@@ -46,7 +34,7 @@ const Countries = () => {
       <div id='top-section'>
         <div>
           <h3>View Countries</h3>
-          <p>Page 1 of 5</p>
+          <p>Page {Number(searchParams.get('page'))} of 5</p>
         </div>
         <select>
           <option value="">Select region</option>
@@ -57,7 +45,7 @@ const Countries = () => {
       <div id='countries' className='flex flex-wrap w-full justify-between md:gap-1'>
         {listOfCountries.length > 0 && listOfCountries.map((country, index) => {
           return (
-            <div key={index} className='w-5/12 md:w-1/5 mb-5'>
+            <div key={index} className='w-5/12 md:w-1/5 mb-5 text-gray-500'>
               <img src={country.flags.svg} alt={country.flags.alt} />
               <p>{country.name.common}</p>
               <p>{country.capital}</p>
@@ -88,13 +76,7 @@ const Countries = () => {
       </div>
 
       {/* Pagination  */}
-      <div id='pagination'>
-        <button type="button">1</button>
-        <button type="button">2</button>
-        <button type="button">3</button>
-        <button type="button">4</button>
-        <button type="button">5</button>
-      </div>
+      <Pagination searchParams={searchParams} setSearchParams={setSearchParams}/>
     </CountriesSection>
   )
 }
