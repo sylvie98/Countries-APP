@@ -11,7 +11,7 @@ const Header = () => {
     <div className='absolute top-0 left-0 w-full flex justify-center items-center flex-col  mt-24  p-5'>
     <h1 className='text-white text-1xl font-bold '>Country API App</h1>
       <p className='text-white  text-2xl mt-6'>This is a simple app that allow you to search for countries and continents using the API</p>
-      <input type='text'name='username' placeholder='search country by name' className='h-10 w-72 mt-6'/>
+      <input type='text'name='search' id='search' placeholder='search country by name' className='h-10 w-72 mt-6'/>
       </div>
     
     </section>
